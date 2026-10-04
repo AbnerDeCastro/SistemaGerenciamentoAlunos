@@ -7,6 +7,25 @@ class Aluno {
     double nota2;
     double nota3;
 
+    public double calcularMedia() {
+     return ((nota1 + nota2 + nota3)/3 );
+    }
+
+    public String verificarAprovacao() {
+
+        if (calcularMedia() >= 7 ) {
+            return "Aprovado";
+        }
+
+        else if (calcularMedia() >= 5 ) {
+            return "recuperação";
+        }
+
+        else {
+            return "Reprovado";
+            }
+    }
+
     public Aluno(String nome, int idade, double nota1, double nota2, double nota3) {
         this.nome = nome;
         this.idade = idade;
@@ -41,6 +60,8 @@ public class Main {
         System.out.println("Nome: " + meuAluno.nome);
         System.out.println("Idade: " + meuAluno.idade);
         System.out.println("Notas: " + meuAluno.nota1 + " | " + meuAluno.nota2 + " | " + meuAluno.nota3);
+        System.out.println(meuAluno.calcularMedia());
+        System.out.println(meuAluno.verificarAprovacao());
 
         scanner.close();
     }
