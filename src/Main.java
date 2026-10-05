@@ -117,6 +117,69 @@ public class Main {
         System.out.println("Aluno não encontrado!");
     }
 
+    public static void alterarAluno(ArrayList<Aluno> alunos, Scanner scanner) {
+
+        System.out.print("Digite o nome do aluno que deseja alterar: ");
+        String busca = scanner.nextLine();
+
+        for (int i = 0; i < alunos.size(); i++) {
+
+            Aluno aluno = alunos.get(i);
+
+            if (busca.equals(aluno.nome)) {
+
+                System.out.println("O que deseja alterar?");
+                System.out.println("1 - Nome");
+                System.out.println("2 - Idade");
+                System.out.println("3 - Notas");
+
+                String escolha = scanner.nextLine();
+
+                // AGORA entram os ifs de escolha
+
+                if  (escolha.equals("1")) {
+                    System.out.println("Digite o nome para alterar: ");
+                    String nomeNovo = scanner.nextLine();
+                    aluno.nome = nomeNovo;
+                }
+                else if (escolha.equals("2")) {
+                    System.out.println("Digite a idade para alterar: ");
+                    int idadeNovo = scanner.nextInt();
+                    aluno.idade = idadeNovo;
+                    scanner.nextLine();
+                }
+
+                else if (escolha.equals("3")) {
+                    System.out.println("Digite qual nota deseja alterar: ");
+                    System.out.println("1 - Nota 1");
+                    System.out.println("2 - Nota 2");
+                    System.out.println("3 - Nota 3");
+
+                    String escolhaNota = scanner.nextLine();
+
+                    if (escolhaNota.equals("1")){
+                        System.out.println("Digite a nota para alterar: ");
+                        double notaNova = scanner.nextDouble();
+                        aluno.nota1 = notaNova;
+
+                    } else if (escolhaNota.equals("2")) {
+                        System.out.println("Digite a nota para alterar: ");
+                        double notaNova = scanner.nextDouble();
+                        aluno.nota2 = notaNova;
+                    } else if (escolhaNota.equals("3")) {
+
+                        System.out.println("Digite a nota para alterar: ");
+                        double notaNova = scanner.nextDouble();
+                        aluno.nota3 = notaNova;
+
+                    }
+                }
+                System.out.println("Aluno alterado com sucesso!");
+                return;
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         // Create List
@@ -124,14 +187,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int escolha = 0;
-        while (escolha != 5) {
+        while (escolha != 6) {
 
             System.out.println("===== SISTEMA DE GERENCIAMENTO DE ALUNOS =====");
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Listar alunos");
             System.out.println("3 - Buscar aluno");
             System.out.println("4 - Excluir aluno");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Para alterar dados do Aluno");
+            System.out.println("6 - Sair");
             System.out.print("Escolha uma opção: ");
             escolha = scanner.nextInt();
             scanner.nextLine();
@@ -144,6 +208,9 @@ public class Main {
             buscarAluno(alunos, scanner);}
             else if (escolha == 4) {
                 deletarAluno(alunos, scanner);
+            }
+            else if (escolha == 5) {
+                alterarAluno(alunos, scanner);
             }
 
         }
