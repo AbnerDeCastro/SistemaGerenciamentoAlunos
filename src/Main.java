@@ -102,6 +102,21 @@ public class Main {
         }
     }
 
+    public static void deletarAluno(ArrayList<Aluno> alunos, Scanner scanner) {
+        System.out.print("Digite o nome do aluno que deseja deletar: ");
+        String busca = scanner.nextLine();
+
+        for (int i = 0; i < alunos.size(); i++) {
+            Aluno aluno = alunos.get(i);
+            if (busca.equals(aluno.nome)) {
+                alunos.remove(i);
+                System.out.println("Aluno deletado com sucesso!");
+                return;
+            }
+        }
+        System.out.println("Aluno não encontrado!");
+    }
+
     public static void main(String[] args) {
 
         // Create List
@@ -109,13 +124,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         int escolha = 0;
-        while (escolha != 4) {
+        while (escolha != 5) {
 
             System.out.println("===== SISTEMA DE GERENCIAMENTO DE ALUNOS =====");
             System.out.println("1 - Cadastrar aluno");
             System.out.println("2 - Listar alunos");
             System.out.println("3 - Buscar aluno");
-            System.out.println("4 - Sair");
+            System.out.println("4 - Excluir aluno");
+            System.out.println("5 - Sair");
             System.out.print("Escolha uma opção: ");
             escolha = scanner.nextInt();
             scanner.nextLine();
@@ -126,6 +142,9 @@ public class Main {
                 listarAlunos(alunos);
             } else if (escolha == 3) {
             buscarAluno(alunos, scanner);}
+            else if (escolha == 4) {
+                deletarAluno(alunos, scanner);
+            }
 
         }
         scanner.close();
