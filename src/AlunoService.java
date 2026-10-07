@@ -8,8 +8,8 @@ public class AlunoService {
         } else {
             for (Aluno aluno : alunos) {
                 System.out.println("--- Aluno ---");
-                System.out.println("Nome: " + aluno.nome);
-                System.out.println("Idade: " + aluno.idade);
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Idade: " + aluno.getIdade());
                 System.out.println("Média: " + aluno.calcularMedia());
                 System.out.println("Situação: " + aluno.verificarAprovacao());
             }
@@ -52,10 +52,10 @@ public class AlunoService {
         boolean existe = false;
 
         for (Aluno aluno : alunos) {
-            if (busca.equals(aluno.nome)) {
+            if (busca.equals(aluno.getNome())) {
                 System.out.println("Alunos encontrados com sucesso!");
-                System.out.println("Nome: " + aluno.nome);
-                System.out.println("Idade: " + aluno.idade);
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Idade: " + aluno.getIdade());
                 System.out.print("Status: "+ aluno.verificarAprovacao());
                 existe = true;
 
@@ -72,7 +72,7 @@ public class AlunoService {
 
         for (int i = 0; i < alunos.size(); i++) {
             Aluno aluno = alunos.get(i);
-            if (busca.equals(aluno.nome)) {
+            if (busca.equals(aluno.getNome())) {
                 alunos.remove(i);
                 System.out.println("Aluno deletado com sucesso!");
                 return;
@@ -90,7 +90,7 @@ public class AlunoService {
 
             Aluno aluno = alunos.get(i);
 
-            if (busca.equals(aluno.nome)) {
+            if (busca.equals(aluno.getNome())) {
 
                 System.out.println("O que deseja alterar?");
                 System.out.println("1 - Nome");
@@ -104,12 +104,12 @@ public class AlunoService {
                 if  (escolha.equals("1")) {
                     System.out.println("Digite o nome para alterar: ");
                     String nomeNovo = scanner.nextLine();
-                    aluno.nome = nomeNovo;
+                    aluno.setNome(nomeNovo);
                 }
                 else if (escolha.equals("2")) {
                     System.out.println("Digite a idade para alterar: ");
                     int idadeNovo = scanner.nextInt();
-                    aluno.idade = idadeNovo;
+                    aluno.setIdade(idadeNovo);
                     scanner.nextLine();
                 }
 
@@ -124,17 +124,17 @@ public class AlunoService {
                     if (escolhaNota.equals("1")){
                         System.out.println("Digite a nota para alterar: ");
                         double notaNova = scanner.nextDouble();
-                        aluno.nota1 = notaNova;
+                        aluno.setNota1(notaNova);
 
                     } else if (escolhaNota.equals("2")) {
                         System.out.println("Digite a nota para alterar: ");
                         double notaNova = scanner.nextDouble();
-                        aluno.nota2 = notaNova;
+                        aluno.setNota2(notaNova);
                     } else if (escolhaNota.equals("3")) {
 
                         System.out.println("Digite a nota para alterar: ");
                         double notaNova = scanner.nextDouble();
-                        aluno.nota3 = notaNova;
+                        aluno.setNota3(notaNova);
 
                     }
                 }
