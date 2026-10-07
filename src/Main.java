@@ -178,6 +178,7 @@ public class Main {
                 return;
             }
         }
+        System.out.println("Aluno não encontrado!");
     }
 
     public static void main(String[] args) {
