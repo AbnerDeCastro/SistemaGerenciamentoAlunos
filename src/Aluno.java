@@ -26,10 +26,10 @@ public class Aluno {
 
     public Aluno(String nome, int idade, double nota1, double nota2, double nota3) {
         this.nome = nome;
-        this.idade = idade;
-        this.nota1 = nota1;
-        this.nota2 = nota2;
-        this.nota3 = nota3;
+        setIdade(idade);
+        setNota1(nota1);
+        setNota2(nota2);
+        setNota3(nota3);
     }
     // Getter
     public String getNome() {
@@ -53,15 +53,37 @@ public class Aluno {
         this.nome = nome;
     }
     public void setIdade(int idade) {
-        this.idade = idade;
+        if (idade >= 0) {
+            this.idade = idade;
+        }
+        else {
+            throw  new IllegalArgumentException("Idade Inserida Invalida");
+        }
     }
     public void setNota1(double nota1) {
-        this.nota1 = nota1;
+        if (nota1 >= 0 &&  nota1 <= 10) {
+            this.nota1 = nota1;
+        }
+        else  {
+            throw  new IllegalArgumentException("Nota invalida!");
+        }
     }
+
     public void setNota2(double nota2) {
-        this.nota2 = nota2;
+        if (nota2 >= 0 && nota2 <= 10) {
+            this.nota2 = nota2;
+        }
+        else   {
+            throw  new IllegalArgumentException("Nota invalida!");
+        }
     }
+
     public void setNota3(double nota3) {
-        this.nota3 = nota3;
+        if (nota3 >= 0 && nota3 <= 10) {
+            this.nota3 = nota3;
+        }
+        else   {
+            throw  new IllegalArgumentException("Nota invalida!");
+        }
     }
 }

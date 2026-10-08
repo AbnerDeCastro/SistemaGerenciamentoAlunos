@@ -36,9 +36,15 @@ public class AlunoService {
             System.out.print("Informe sua terceira nota: ");
             double nota3 = scanner.nextDouble();
 
-            Aluno meuAluno = new Aluno(nome, idade, nota1, nota2, nota3);
-            alunos.add(meuAluno);
-            System.out.println("Alunos cadastrados com sucesso!");
+            try {
+                Aluno meuAluno = new Aluno(nome, idade, nota1, nota2, nota3);
+                alunos.add(meuAluno);
+                System.out.println("Alunos cadastrados com sucesso!");
+
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+
             scanner.nextLine();
 
             System.out.println("Deseja cadastrar outro Aluno? (s/n)");
