@@ -12,7 +12,6 @@ public class Main {
         AlunoService alunoService = new AlunoService();
 
         int escolha = 0;
-        escolha = lerOpcao(scanner);
         while (escolha != 6) {
 
             System.out.println("===== SISTEMA DE GERENCIAMENTO DE ALUNOS =====");
@@ -22,9 +21,7 @@ public class Main {
             System.out.println("4 - Excluir aluno");
             System.out.println("5 - Para alterar dados do Aluno");
             System.out.println("6 - Sair");
-            System.out.print("Escolha uma opção: ");
-            escolha = scanner.nextInt();
-            scanner.nextLine();
+            escolha = lerOpcao(scanner);
 
             if (escolha == 1) {
                 alunoService.cadastrarAluno(alunos, scanner);
@@ -45,20 +42,21 @@ public class Main {
 
     public static int lerOpcao(Scanner scanner) {
         int opcao = -1;
-            try {
-            System.out.print("Escolha uma opção de 1 a 6: ");
-            opcao = scanner.nextInt();
             while (opcao < 1 || opcao > 6){
-                System.out.println("Opção inválida. Digite novamente.");
-                System.out.println("Escolha uma opção");
-                opcao = scanner.nextInt();
+                try{
+                    System.out.print("Escolha uma opção de 1 a 6: ");
+                    opcao = scanner.nextInt();
+
+                    if (opcao < 1 || opcao > 6) {
+                        System.out.println("Opção inválida. Digite um número de 1 a 6.");
+                    }
             }
-            return opcao;
+                catch (InputMismatchException e){
+                    System.out.println("Informe uma opção valida de 1 a 6");
+                    scanner.nextLine();
+                }
         }
-        catch (InputMismatchException e){
-            System.out.println("Informe uma opção valida de 1 a 6");
             scanner.nextLine();
-        }
             return opcao;
     }
 }
