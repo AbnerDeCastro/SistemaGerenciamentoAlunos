@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class AlunoService {
     public void listarAlunos(ArrayList<Aluno> alunos) {
@@ -24,68 +25,10 @@ public class AlunoService {
             System.out.print("Digite o seu nome: ");
             String nome = scanner.nextLine();
 
-            int idade = 0;
-            boolean idadeValida = false;
-
-            while (!idadeValida) {
-
-                    System.out.print("Digite o seu Idade: ");
-                    idade = scanner.nextInt();
-
-                    if (idade >= 0 ) {
-                        idadeValida = true;
-                    }
-                    else {
-                        System.out.println("Idade inválida! Digite novamente!");
-                    }
-            }
-
-            // Primeira nota
-            boolean notaValida = false;
-            double nota1 = 0;
-
-            while (!notaValida) {
-                System.out.print("Digite a priemira nota: ");
-                nota1 = scanner.nextDouble();
-
-                if (nota1 >= 0 && nota1 <= 10) {
-                    notaValida = true;
-                }
-                else {
-                    System.out.println("Nota Inválida! Digite novamente!");
-                }
-            }
-
-            // Segunda Nota
-            boolean nota2Valida = false;
-            double nota2 = 0;
-            while (!nota2Valida) {
-                System.out.print("Digite a segunda nota: ");
-                nota2 = scanner.nextDouble();
-
-                if (nota2 >= 0 && nota2 <= 10) {
-                    nota2Valida = true;
-                }
-                else {
-                    System.out.println("Nota Inválida! Digite novamente!");
-                }
-            }
-
-
-            // Terceira nota
-
-            boolean nota3Valida = false;
-            double nota3 = 0;
-            while (!nota3Valida) {
-                System.out.print("Digite a terceira nota: ");
-                nota3 = scanner.nextDouble();
-                if (nota3 >= 0 && nota3 <= 10) {
-                    nota3Valida = true;
-                }
-                else {
-                    System.out.println("Nota Inválida! Digite novamente!");
-                }
-            }
+            int idade = lerIdade(scanner);
+            double nota1 = lerNota(scanner);
+            double nota2 = lerNota(scanner);
+            double nota3 = lerNota(scanner);
 
             try {
                 Aluno meuAluno = new Aluno(nome, idade, nota1, nota2, nota3);
@@ -101,6 +44,50 @@ public class AlunoService {
             System.out.println("Deseja cadastrar outro Aluno? (s/n)");
             opcao = scanner.nextLine();
         }
+    }
+    public int lerIdade(Scanner scanner){
+        int idade = -1;
+        boolean idadeValida = false;
+        while (!idadeValida){
+            try {
+                System.out.println("Digite o idade: ");
+                idade = scanner.nextInt();
+
+                if (idade >= 0) {
+                    idadeValida = true;
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Entrada Inválida! Digite uma idade usando números inteiros.");
+                scanner.nextLine();
+            }
+        }
+
+        return idade;
+    }
+
+    public double lerNota(Scanner scanner) {
+        boolean notaValida = false;
+        double nota = 0;
+        while (!notaValida) {
+            try {
+                System.out.println("Digite o nota: ");
+                nota = scanner.nextDouble();
+                if (nota >= 0 && nota <= 10) {
+                    notaValida = true;
+                }
+                else {
+                    System.out.println("Digite uma nota de 0 a 10.");
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Nota inválida! Digite novamente.");
+                scanner.nextLine();
+            }
+
+        }
+        return nota;
+
     }
 
     public void buscarAluno(ArrayList<Aluno> alunos, Scanner scanner) {
