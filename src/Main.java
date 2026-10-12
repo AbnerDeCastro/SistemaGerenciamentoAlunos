@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Main {
         AlunoService alunoService = new AlunoService();
 
         int escolha = 0;
+        escolha = lerOpcao(scanner);
         while (escolha != 6) {
 
             System.out.println("===== SISTEMA DE GERENCIAMENTO DE ALUNOS =====");
@@ -39,5 +41,24 @@ public class Main {
 
         }
         scanner.close();
+    }
+
+    public static int lerOpcao(Scanner scanner) {
+        int opcao = -1;
+            try {
+            System.out.print("Escolha uma opção de 1 a 6: ");
+            opcao = scanner.nextInt();
+            while (opcao < 1 || opcao > 6){
+                System.out.println("Opção inválida. Digite novamente.");
+                System.out.println("Escolha uma opção");
+                opcao = scanner.nextInt();
+            }
+            return opcao;
+        }
+        catch (InputMismatchException e){
+            System.out.println("Informe uma opção valida de 1 a 6");
+            scanner.nextLine();
+        }
+            return opcao;
     }
 }
