@@ -24,17 +24,68 @@ public class AlunoService {
             System.out.print("Digite o seu nome: ");
             String nome = scanner.nextLine();
 
-            System.out.print("Informe a sua idade: ");
-            int idade = scanner.nextInt();
+            int idade = 0;
+            boolean idadeValida = false;
 
-            System.out.print("Informe sua primeira nota: ");
-            double nota1 = scanner.nextDouble();
+            while (!idadeValida) {
 
-            System.out.print("Informe sua segunda nota: ");
-            double nota2 = scanner.nextDouble();
+                    System.out.print("Digite o seu Idade: ");
+                    idade = scanner.nextInt();
 
-            System.out.print("Informe sua terceira nota: ");
-            double nota3 = scanner.nextDouble();
+                    if (idade >= 0 ) {
+                        idadeValida = true;
+                    }
+                    else {
+                        System.out.println("Idade inválida! Digite novamente!");
+                    }
+            }
+
+            // Primeira nota
+            boolean notaValida = false;
+            double nota1 = 0;
+
+            while (!notaValida) {
+                System.out.print("Digite a priemira nota: ");
+                nota1 = scanner.nextDouble();
+
+                if (nota1 >= 0 && nota1 <= 10) {
+                    notaValida = true;
+                }
+                else {
+                    System.out.println("Nota Inválida! Digite novamente!");
+                }
+            }
+
+            // Segunda Nota
+            boolean nota2Valida = false;
+            double nota2 = 0;
+            while (!nota2Valida) {
+                System.out.print("Digite a segunda nota: ");
+                nota2 = scanner.nextDouble();
+
+                if (nota2 >= 0 && nota2 <= 10) {
+                    nota2Valida = true;
+                }
+                else {
+                    System.out.println("Nota Inválida! Digite novamente!");
+                }
+            }
+
+
+            // Terceira nota
+
+            boolean nota3Valida = false;
+            double nota3 = 0;
+            while (!nota3Valida) {
+                System.out.print("Digite a terceira nota: ");
+                nota3 = scanner.nextDouble();
+                if (nota3 >= 0 && nota3 <= 10) {
+                    nota3Valida = true;
+                }
+                else {
+                    System.out.println("Nota Inválida! Digite novamente!");
+                }
+            }
 
             try {
                 Aluno meuAluno = new Aluno(nome, idade, nota1, nota2, nota3);
@@ -105,7 +156,7 @@ public class AlunoService {
 
                 String escolha = scanner.nextLine();
 
-                // AGORA entram os ifs de escolha
+                // ifs de escolha
 
                 if  (escolha.equals("1")) {
                     System.out.println("Digite o nome para alterar: ");
