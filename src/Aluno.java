@@ -11,12 +11,12 @@ public class Aluno {
 
     public String verificarAprovacao() {
 
-        if (calcularMedia() >= 7 ) {
+        if (calcularMedia()  >= 7 ) {
             return "Aprovado";
         }
 
         else if (calcularMedia() >= 5 ) {
-            return "recuperação";
+            return "Recuperação";
         }
 
         else {

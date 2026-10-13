@@ -143,6 +143,13 @@ public class AlunoService {
 
                 String escolha = scanner.nextLine();
 
+                if (escolha.equals("1") || escolha.equals("2") || escolha.equals("3")) {
+                    System.out.println("Opção válida!");
+                }
+                else {
+                    System.out.println("Digite uma opção válida de 1 a 3!");
+                }
+
                 // ifs de escolha
 
                 if  (escolha.equals("1")) {
@@ -151,10 +158,10 @@ public class AlunoService {
                     aluno.setNome(nomeNovo);
                 }
                 else if (escolha.equals("2")) {
-                    System.out.println("Digite a idade para alterar: ");
-                    int idadeNovo = scanner.nextInt();
+                    int idadeNovo = lerIdade(scanner);
                     aluno.setIdade(idadeNovo);
-                    scanner.nextLine();
+                    System.out.println("Nome do Aluno alterado com sucesso! ");
+
                 }
 
                 else if (escolha.equals("3")) {
@@ -166,23 +173,26 @@ public class AlunoService {
                     String escolhaNota = scanner.nextLine();
 
                     if (escolhaNota.equals("1")){
-                        System.out.println("Digite a nota para alterar: ");
-                        double notaNova = scanner.nextDouble();
+                        double notaNova = lerNota(scanner);
                         aluno.setNota1(notaNova);
+                        System.out.println("Nota 1 alterado com sucesso!");
 
                     } else if (escolhaNota.equals("2")) {
-                        System.out.println("Digite a nota para alterar: ");
-                        double notaNova = scanner.nextDouble();
+                        double notaNova = lerNota(scanner);
                         aluno.setNota2(notaNova);
-                    } else if (escolhaNota.equals("3")) {
+                        System.out.println("Nota 2 alterado com sucesso! ");
 
-                        System.out.println("Digite a nota para alterar: ");
-                        double notaNova = scanner.nextDouble();
+                    } else if (escolhaNota.equals("3")) {
+                        double notaNova = lerNota(scanner);
                         aluno.setNota3(notaNova);
+                        System.out.println("Nota 3 alterado com sucesso!");
 
                     }
+                    else {
+                        System.out.println("Opção inválida! ");
+                    }
                 }
-                System.out.println("Aluno alterado com sucesso!");
+
                 return;
             }
         }
