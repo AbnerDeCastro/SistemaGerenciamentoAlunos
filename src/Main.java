@@ -21,7 +21,7 @@ public class Main {
             System.out.println("4 - Excluir aluno");
             System.out.println("5 - Para alterar dados do Aluno");
             System.out.println("6 - Sair");
-            escolha = lerOpcao(scanner);
+            escolha = lerOpcao(scanner, 1,6);
 
             if (escolha == 1) {
                 alunoService.cadastrarAluno(alunos, scanner);
@@ -40,23 +40,26 @@ public class Main {
         scanner.close();
     }
 
-    public static int lerOpcao(Scanner scanner) {
-        int opcao = -1;
-            while (opcao < 1 || opcao > 6){
+    public static int lerOpcao(Scanner scanner, int minimo, int maximo) {
+        int opcao = 0;
+            while (true){
                 try{
-                    System.out.print("Escolha uma opção de 1 a 6: ");
+                    System.out.print("Escolha uma opção de " + minimo + " a " + maximo + ": ");
                     opcao = scanner.nextInt();
 
-                    if (opcao < 1 || opcao > 6) {
-                        System.out.println("Opção inválida. Digite um número de 1 a 6.");
+                    if (opcao >= minimo && opcao <= maximo) {
+                        scanner.nextLine();
+                        return opcao;
+
+                    }
+                    else {
+                        System.out.println("A opção digitada inválida! ");
                     }
             }
-                catch (InputMismatchException e){
-                    System.out.println("Informe uma opção valida de 1 a 6");
+                catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida! Digite um número inteiro.");
                     scanner.nextLine();
                 }
         }
-            scanner.nextLine();
-            return opcao;
     }
 }
